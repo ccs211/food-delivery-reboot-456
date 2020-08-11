@@ -1,8 +1,8 @@
 require_relative 'base_view'
 
-class MealsView < BaseView
+class CustomersView < BaseView
   def ask_for(attribute)
-    puts "What's the #{attribute} of the meal?"
+    puts "What's the #{attribute} of the customer?"
     print "> "
 
     # we print the question and then we want to run

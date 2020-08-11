@@ -1,22 +1,18 @@
-require 'csv'
-require 'byebug'
-
 require_relative 'base_repository'
-require_relative '../models/customer'
 
 class CustomerRepository < BaseRepository
   private
 
-  def build_record(row)
-    row[:id] = row[:id].to_i
-    Customer.new(row)
-  end
-
-  def customers
-    @elements
+  # This private method is REFERENCED/CALLED in
+  # BaseRepository.
+  #
+  # It needs to be defined here because MealRepository
+  # and CustomerRepository differ in the type of elements
+  # they are trying to create (Meal and Customer)
+  #
+  def build_element(row)
+    # Unlike the meal, there are no customer specific
+    # convertions to be done on Row
+    Customer.new(row) # returns a Customer instance
   end
 end
-
-
-
-
