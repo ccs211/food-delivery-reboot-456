@@ -3,6 +3,11 @@ require_relative '../views/customers_view'
 
 class CustomersController < BaseController
   def initialize(customer_repository)
+    # We need to override the BaseController#initialize
+    # so that we can instantiate a View which is specific
+    # to this Controller.
+    # We can super with the repo, so that the BaseController
+    # can do the setup that is common for all controllers
     super(customer_repository)
     @view = CustomersView.new
   end

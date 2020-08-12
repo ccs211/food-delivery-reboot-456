@@ -42,6 +42,6 @@ class EmployeeRepository < BaseRepository
   def build_element(row)
     # Unlike the meal, there are no customer specific
     # convertions to be done on Row
-    Employee.new(row) # returns a Customer instance
+    Employee.new(row) # returns an Emlpoyee instance
   end
 end

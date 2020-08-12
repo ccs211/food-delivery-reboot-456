@@ -6,7 +6,7 @@ class Meal
   # is REFERENCED/CALLED in BaseRepository.
   #
   # It needs to be defined in here because the Meal
-  # and Customer differ in their headers.
+  # Customer, Employee, and Order differ in their headers.
   #
   # It makes sense that the class would know
   # what CSV headers are needed to persist

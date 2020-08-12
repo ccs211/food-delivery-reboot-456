@@ -24,7 +24,7 @@ class BaseRepository
 
   def find(id)
     # select => []
-    # This works because BOTH Meal and Customer
+    # This works because ALL Meal, Customer, Employee and Order
     # have a GETTER for :id, i.e.:
     #
     # Meal.new({}).id => 6
@@ -36,7 +36,7 @@ class BaseRepository
     @elements[index]
   end
 
-  # receives a Meal/Customer instance
+  # receives a Meal/Customer/Employee/Order instance
   def add(element)
     # set element id
     # again, this works because BOTH Meal and Customer
@@ -49,7 +49,11 @@ class BaseRepository
     # increment next_id
     @next_id += 1
   end
+  # The tests look for a #create method. The old specs looked for #add
+  # Instead of renaming the original #add method, we can alias a method
+  # with the following syntax:
   alias create add
+  # or, alternatively: alias_method: :create, :add
 
   def save
     save_csv
@@ -63,7 +67,7 @@ class BaseRepository
 
   def load_csv
     CSV.foreach(@csv_filepath, CSV_DEFAULT_OPTIONS) do |row|
-      # Both Meal and Customer have :id and :name
+      # All Meal, Customer, Employee and Order have an :id
       # so we can deal with them in the BaseRepository
       #
       # :id needs to be converted into integer
@@ -71,11 +75,14 @@ class BaseRepository
       row[:id] = row[:id].to_i
 
       # row is a Hash-like object (Duck Typing)
-      # Because we need to do Meal.new or Customer.new
+      # Because we need to do Meal.new, Customer.new
+      # Employee.new or Order.new
       # depending on whether we are in a MealRepository
-      # or a CustomerRepository (which inherit from BaseRepository)
+      # CustomerRepository, EmployeeRepository
+      # or OrderRepository (which inherit from BaseRepository)
       # the build_element will be implemented in the
-      # CHILD repositories (see MealRepository and CustomerRepository)
+      # CHILD repositories (see MealRepository, CustomerRepository
+      # EmployeeRepository and OrderRepository)
       @elements << build_element(row)
     end
 
@@ -84,21 +91,21 @@ class BaseRepository
 
   def save_csv
     # If we are saving, for sure there must be
-    # at least one element (a Meal or a Customer)...
+    # at least one element (a Meal, Customer, or Order)...
     CSV.open(@csv_filepath, 'wb') do |csv|
       # Therefore, we grab this first element from the Array
-      # and get its class (it will be either Meal or Customer)
+      # and get its class (it will be either Meal, Customer or Order)
       # and then use Duck Typing again to ask the class
       # what are its headers:
       #
       # (see both models for implementation)
       csv << @elements.first.class.csv_headers
       @elements.each do |element|
-        # Likewise, because Meal and Customer have different
+        # Likewise, because Meal, Customer, and Order have different
         # attributes/properties, we ask the instance to
         # convert itself into an Array
         #
-        # (see both models for implementation)
+        # (see the model classes for implementation)
         csv << element.to_array
       end
     end

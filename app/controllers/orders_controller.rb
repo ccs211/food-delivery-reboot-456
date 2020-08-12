@@ -5,7 +5,19 @@ require 'pry-byebug'
 
 class OrdersController < BaseController
   def initialize(meal_repository, customer_repository, employee_repository, order_repository)
+     # We need to override the BaseController#initialize
+    # so that we can instantiate a View which is specific
+    # to this Controller.
+    #
+    # Also, the OrdersController has more arguments than the other Controllers.
+    # As such, we call super to run the BaseController#initialize, which only
+    # takes 1 argument - the main repo (in this case, OrderRepository).
+    #
+    # We can super with the repo, so that the BaseController
+    # can do the setup that is common for all controllers
     super(order_repository)
+
+    # After calling super, we store the other 3 repos in their own instance variables
     @meal_repository = meal_repository
     @employee_repository = employee_repository
     @customer_repository = customer_repository
@@ -53,7 +65,7 @@ class OrdersController < BaseController
       order.employee.username == employee.username
     end
     @view.display_elements(orders)
-    index = @view.ask_for(:index, :customer).to_i - 1
+    index = @view.ask_for(:index, :order).to_i - 1
     order = orders[index]
     order.deliver!
     @repository.save

@@ -55,8 +55,8 @@ class Router
 
   def route_delivery_guy_action(action)
     case action
-    when 1 then puts "Listing all undelivered orders..."
-    when 2 then puts "Marking an order as delivered..."
+    when 1 then @orders_controller.list_my_orders(@user)
+    when 2 then @orders_controller.mark_as_delivered(@user)
     when 0 then destroy_session
     when 9 then stop
     else
