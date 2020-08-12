@@ -8,6 +8,7 @@ class Router
     @meals_controller = controllers[:meals_controller]
     @customers_controller = controllers[:customers_controller]
     @sessions_controller = controllers[:sessions_controller]
+    @orders_controller = controllers[:orders_controller]
     @running = true
     @user = nil
   end
@@ -43,8 +44,8 @@ class Router
     when 2 then @meals_controller.add
     when 3 then @customers_controller.list
     when 4 then @customers_controller.add
-    when 5 then puts "Listing undelivered orders"
-    when 6 then puts "Adding an order orders"
+    when 5 then @orders_controller.list_undelivered_orders
+    when 6 then @orders_controller.add
     when 0 then destroy_session
     when 9 then stop
     else
