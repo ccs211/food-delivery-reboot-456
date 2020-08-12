@@ -53,30 +53,11 @@ employee_repository = EmployeeRepository.new(employees_csv_filepath)
 # that can be used to create the SessionsController:
 sessions_controller = SessionsController.new(employee_repository)
 
-# In order to create a OrdersController, I need to...
-# have a string with the Orders CSV filepath...
-orders_csv_filepath = File.join(__dir__, 'data/orders.csv')
-# so that I can use it to create a EmployeeRepository...
-order_repository = OrderRepository.new(
-  orders_csv_filepath,
-  meal_repository,
-  customer_repository,
-  employee_repository
-)
-# that can be used to create the SessionsController:
-orders_controller = OrdersController.new(
-  meal_repository,
-  customer_repository,
-  employee_repository,
-  order_repository
-)
-
 # Organize all controllers in a hash to be used in the Router:
 controllers = {
   meals_controller: meals_controller,
   customers_controller: customers_controller,
-  sessions_controller: sessions_controller,
-  orders_controller: orders_controller
+  sessions_controller: sessions_controller
 }
 
 router = Router.new(controllers)

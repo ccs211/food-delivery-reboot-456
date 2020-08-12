@@ -32,10 +32,6 @@ class BaseRepository
     @elements.find { |element| element.id == id }
   end
 
-  def find_by_index(index)
-    @elements[index]
-  end
-
   # receives a Meal/Customer instance
   def add(element)
     # set element id
