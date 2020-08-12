@@ -18,9 +18,9 @@ class SessionsController
     # does the username match an employee?
     # does the password match?
     if employee && employee.password == password
-       # Return an employee instance
-       @view.display_login_successfull(employee.username)
-       employee
+      # Return an employee instance
+      @view.display_login_successfull(employee.username)
+      employee
     else
       @view.display_wrong_credentials
       create

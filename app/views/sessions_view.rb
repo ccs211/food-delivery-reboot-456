@@ -10,7 +10,7 @@ class SessionsView
   def ask_for_password
     puts "Password:"
     print "> "
-    STDIN.noecho(&:gets).chomp
+    $stdin.noecho(&:gets).chomp
   end
 
   def display_login_successfull(username)

@@ -1,4 +1,5 @@
 require_relative 'base_repository'
+require_relative '../models/meal'
 
 class MealRepository < BaseRepository
   private

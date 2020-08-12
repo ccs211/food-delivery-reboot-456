@@ -1,52 +1,59 @@
-FrozenStringLiteralComment:
+Style/FrozenStringLiteralComment:
   Enabled: false
-ConditionalAssignment:
+Style/ConditionalAssignment:
   Enabled: false
-StringLiterals:
+Style/StringLiterals:
   Enabled: false
-TrailingBlankLines:
-  Enabled: false
-LineLength:
+Layout/LineLength:
   Max: 120
-UnusedMethodArgument:
+Lint/UnusedMethodArgument:
   Enabled: false
-EmptyLines:
+Layout/EmptyLines:
   Enabled: false
-RedundantReturn:
+Style/RedundantReturn:
   Enabled: false
-SelfAssignment:
+Style/SelfAssignment:
   Enabled: false
-Documentation:
+Style/Documentation:
   Enabled: false
-RegexpLiteral:
+Style/RegexpLiteral:
   Enabled: false
-GuardClause:
+Style/GuardClause:
   Enabled: false
-WordArray:
+Style/WordArray:
   Enabled: false
-SymbolProc:
+Style/SymbolProc:
   Enabled: false
-AbcSize:
+Metrics/AbcSize:
   Enabled: false
-MutableConstant:
+Style/MutableConstant:
   Enabled: false
-SignalException:
+Style/SignalException:
   Enabled: false
-Casecmp:
+Metrics/CyclomaticComplexity:
   Enabled: false
-CyclomaticComplexity:
+Lint/MissingSuper:
   Enabled: false
-MethodMissingSuper:
-  Enabled: false
-MissingRespondToMissing:
+Style/MissingRespondToMissing:
   Enabled: false
 Security/Open:
   Enabled: false
 Bundler/OrderedGems:
   Enabled: false
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false
+Lint/RaiseException:
+  Enabled: false
+Lint/StructNewOverride:
+  Enabled: false
 
 AllCops:
-  TargetRubyVersion: 2.5
+  NewCops: enable
+  TargetRubyVersion: 2.6
   Exclude:
     - '**/Rakefile'
     - '**/spec/**/*'

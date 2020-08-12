@@ -48,4 +48,3 @@ describe "Customer", :customer do
     end
   end
 end
-

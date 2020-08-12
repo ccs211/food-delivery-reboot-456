@@ -32,6 +32,10 @@ class BaseRepository
     @elements.find { |element| element.id == id }
   end
 
+  def find_by_index(index)
+    @elements[index]
+  end
+
   # receives a Meal/Customer instance
   def add(element)
     # set element id
@@ -44,6 +48,11 @@ class BaseRepository
     save_csv
     # increment next_id
     @next_id += 1
+  end
+  alias create add
+
+  def save
+    save_csv
   end
 
   private

@@ -2,7 +2,7 @@ require_relative 'base_repository'
 require_relative '../models/employee'
 
 class EmployeeRepository < BaseRepository
-  undef_method :add
+  undef_method :add, :create
 
   def all_delivery_guys
     # loop through all employees #each

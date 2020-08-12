@@ -17,4 +17,8 @@ class Employee
   def delivery_guy?
     @role == "delivery_guy"
   end
+
+  def to_s
+    "Username: #{username}"
+  end
 end
